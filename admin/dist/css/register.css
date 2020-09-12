@@ -1,0 +1,23 @@
+.attach__button {
+    padding:10px 10px;
+    /* margin:60px 0px !important; */
+    text-decoration: none !important;
+    background-color: #039BE5;
+    color: #ffffff !important;
+    border-radius: 5px;
+  }
+.file__div
+{
+  padding-top:40px;
+  width:100% !important;
+}
+.img-fluid
+{
+  width:100px;
+  height: 100px;
+  object-fit: cover;
+}
+.circle
+{
+  border-radius: 50%;
+}

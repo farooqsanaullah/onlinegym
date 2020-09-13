@@ -36,7 +36,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <form>
+                                    <form action="" method="post">
                                         <div class="form-row">
 
                                             <div class="col-md-12">
@@ -49,13 +49,13 @@
                                                 <div class="form-group">
                                                     <label class="small mb-1">Name</label>
                                                     <input class="form-control py-4" type="text"
-                                                        placeholder="Enter name" required />
+                                                        placeholder="Enter name" name="name" required />
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="small mb-1">Email</label>
-                                                    <input class="form-control py-4" type="email"
+                                                    <input class="form-control py-4" type="email" name="email"
                                                         placeholder="Enter email" required autocomplete="false" />
                                                 </div>
                                             </div>
@@ -63,21 +63,21 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="small mb-1">Password</label>
-                                                    <input class="form-control py-4" type="password"
+                                                    <input class="form-control py-4" type="password" name="password"
                                                         placeholder="Enter password" required autocomplete="false" />
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="small mb-1">Phone Number</label>
-                                                    <input class="form-control py-4" type="number"
+                                                    <input class="form-control py-4" type="number" name="phone_number"
                                                         placeholder="Enter phone number" required
                                                         autocomplete="false" />
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
-                                                <select class="browser-default custom-select" required>
-                                                    <option selected>Please select class</option>
+                                                <select class="browser-default custom-select" name="class_name"  required>
+                                                    <option value="">Please select class</option>
                                                     <option value="Body Combat">Body Combat</option>
                                                     <option value="Yoga Programs">Yoga Programs</option>
                                                     <option value="Cycling Program">Cycling Program</option>
@@ -98,8 +98,8 @@
                                         </div>
 
 
-                                        <div class="form-group mt-4 mb-0"><a class="btn btn-primary btn-block"
-                                                href="login.html" type="submit">Sign Up</a></div>
+                                        <div class="form-group mt-4 mb-0"><button class="btn btn-primary btn-block"
+                                         type="submit" name="submit">Sign Up</button></div>
                                     </form>
                                 </div>
                                 <div class="card-footer text-center">

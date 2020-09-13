@@ -1,3 +1,43 @@
+
+<?php  include 'check_admin_login.php';   ?>
+<?php 
+
+
+include 'dbconnection/dbconnection.php';
+if (isset($_POST['submit'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $address = $_POST['address'];
+    $phone_number = $_POST['phone_number'];
+    $description = $_POST['description'];
+
+
+    $branch_query = " select * from branches where address='$address' or email='$email' ";
+    $query = mysqli_query($con, $branch_query);
+
+    $branch_count = mysqli_num_rows($query);
+    if ($branch_count > 0) {
+        echo "<script> alert('Branch already exists');  </script>";
+    } else {
+        $insert_query = "insert into branches(name,email,phone_number,address,description,image_url) 
+              values('$name','$email','$phone_number','$address','$description','')";
+        $insert_data = mysqli_query($con, $insert_query);
+        if ($insert_data) {
+
+            echo "<script> alert('Successfully Add Branch');  </script>";
+        } else {
+            echo "<script> alert('Error');  </script>";
+        }
+    }
+    
+}
+
+
+?> 
+
+
+
+
 <?php  include 'header.php';   ?>
 <div id="layoutSidenav_content">
             <main>
@@ -13,7 +53,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <form style="margin-top: 20px;">
+                                    <form style="margin-top: 20px;" action="" method="post">
 
                                         <div class="col-md-12">
                                             <div class="challenge-img" align="center">
@@ -22,20 +62,24 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="small mb-1">Branch Name</label>
-                                            <input class="form-control py-4" type="text" placeholder="Enter branch name" />
+                                            <input class="form-control py-4" type="text" placeholder="Enter branch name" name="name" required />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="small mb-1">Email</label>
+                                            <input class="form-control py-4" type="email" placeholder="Enter email" name="email" required />
                                         </div>
                                         <div class="form-group">
                                             <label class="small mb-1">Branch Address</label>
-                                            <input class="form-control py-4" type="text" placeholder="Enter branch address" />
+                                            <input class="form-control py-4" type="text" placeholder="Enter branch address" name="address" required />
                                         </div>
                                         <div class="form-group">
                                             <label class="small mb-1">Contact No</label>
-                                            <input class="form-control py-4" type="text" placeholder="Enter contact no" />
+                                            <input class="form-control py-4" type="number" placeholder="Enter contact no" name="phone_number" required/>
                                         </div>
                                         <div class="form-group">
                                             <label class="small mb-1">Description</label>
 
-                                            <textarea class="form-control" aria-label="With textarea" cols="12" rows="10"></textarea>
+                                            <textarea class="form-control" aria-label="With textarea" cols="12" rows="10" name="description" required></textarea>
                                         </div>
                                         <div class="col-md-12">
 
@@ -48,7 +92,7 @@
 
 
 
-                                        <div class="form-group mt-4 mb-0"><a class="btn btn-primary btn-block" href="index.html" type="submit">Submit</a></div>
+                                        <div class="form-group mt-4 mb-0"><button class="btn btn-primary btn-block" name="submit" type="submit">Submit</button></div>
 
                                     </form>
                                 </div>

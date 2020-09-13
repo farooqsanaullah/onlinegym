@@ -1,3 +1,5 @@
+<?php  include 'check_admin_login.php';   ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -109,9 +111,9 @@
                             <div class="sb-nav-link-icon"><i class="fa fa-key" aria-hidden="true"></i></div>
                             Change password
                         </a>
-                        <a class="nav-link" href="login.html">
+                        <a class="nav-link" href="logout.php">
                             <div class="sb-nav-link-icon"><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
-                            Sign out
+                            Log out
                         </a>
                     </div>
                 </div>

@@ -1,4 +1,39 @@
 
+<?php  include 'check_admin_login.php';   ?>
+<?php 
+
+
+include 'dbconnection/dbconnection.php';
+if (isset($_POST['submit'])) {
+    $name = $_POST['name'];
+    $description = $_POST['description'];
+
+
+    $class_name_query = " select * from classes where name='$name' ";
+    $query = mysqli_query($con, $class_name_query);
+
+    $class_name_count = mysqli_num_rows($query);
+    if ($class_name_count > 0) {
+        echo "<script> alert('Class already exists');  </script>";
+    } else {
+        $insert_query = "insert into classes(name,description,image_url) 
+              values('$name','$description','')";
+        $insert_data = mysqli_query($con, $insert_query);
+        if ($insert_data) {
+
+            echo "<script> alert('Successfully Add Class');  </script>";
+        } else {
+            echo "<script> alert('Error');  </script>";
+        }
+    }
+    
+}
+
+
+?> 
+
+
+
 <?php  include 'header.php';   ?>
         <div id="layoutSidenav_content">
             <main>
@@ -14,7 +49,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <form style="margin-top: 20px;">
+                                    <form style="margin-top: 20px;" action="" method="post">
 
                                         <div class="col-md-12">
                                             <div class="challenge-img" align="center">
@@ -23,18 +58,18 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="small mb-1">Class Name</label>
-                                            <input class="form-control py-4" type="text" placeholder="Enter class name" />
+                                            <input class="form-control py-4" type="text" placeholder="Enter class name" name="name" required/>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="small mb-1">Description</label>
 
-                                            <textarea class="form-control" aria-label="With textarea" cols="12" rows="10"></textarea>
+                                            <textarea class="form-control" aria-label="With textarea" cols="12" rows="10" name="description" required></textarea>
                                         </div>
                                         <div class="col-md-12">
 
                                             <label for="imgs" class="file__div">
-                                                <input type="file" id="imgs" (change)="processFile($event)" hidden accept=" image/jpeg, image/png" multiple="false" />
+                                                <input type="file" id="imgs" (change)="processFile($event)" hidden accept=" image/jpeg, image/png" multiple="false"/>
                                                 <a mat-raised-button class="attach__button">
                                                    image of class </a>
                                             </label>
@@ -42,7 +77,7 @@
 
 
 
-                                        <div class="form-group mt-4 mb-0"><a class="btn btn-primary btn-block" href="index.html" type="submit">Submit</a></div>
+                                        <div class="form-group mt-4 mb-0"><button class="btn btn-primary btn-block" name="submit" type="submit">Submit</button></div>
 
                                     </form>
                                 </div>

@@ -1,4 +1,41 @@
-     
+<?php  include 'check_admin_login.php';   ?>
+<?php 
+
+
+include 'dbconnection/dbconnection.php';
+if (isset($_POST['submit'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $phone_number = $_POST['phone_number'];
+    $expertination = $_POST['expertination'];
+    $description = $_POST['description'];
+
+
+    $email_query = " select * from trainers where email='$email' ";
+    $query = mysqli_query($con, $email_query);
+
+    $email_count = mysqli_num_rows($query);
+    if ($email_count > 0) {
+        echo "<script> alert('Email already exists');  </script>";
+    } else {
+        $insert_query = "insert into trainers(name,email,phone_number,expertination,description,image_url) 
+              values('$name','$email','$phone_number','$expertination','$description','')";
+        $insert_data = mysqli_query($con, $insert_query);
+        if ($insert_data) {
+
+            echo "<script> alert('Successfully Add Trainer');  </script>";
+        } else {
+            echo "<script> alert('Error');  </script>";
+        }
+    }
+    
+}
+
+
+?> 
+ 
+
+
 <?php  include 'header.php';   ?>
      <div id="layoutSidenav_content">
             <main>
@@ -14,7 +51,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <form style="margin-top: 20px;">
+                                    <form style="margin-top: 20px;" action="" method="post">
 
                                         <div class="col-md-12">
                                             <div class="challenge-img" align="center">
@@ -23,18 +60,25 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="small mb-1">Name</label>
-                                            <input class="form-control py-4" type="text" placeholder="Enter name" />
+                                            <input class="form-control py-4" type="text" name="name" placeholder="Enter name" required/>
                                         </div>
-
+                                        <div class="form-group">
+                                            <label class="small mb-1">Email</label>
+                                            <input class="form-control py-4" type="text" name="email"  placeholder="Enter email" required/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="small mb-1">Phone Number</label>
+                                            <input class="form-control py-4" type="number" name="phone_number" placeholder="Enter phone number" required/>
+                                        </div>
                                         <div class="form-group">
                                             <label class="small mb-1">Expertination</label>
-                                            <input class="form-control py-4" type="text" placeholder="Enter Expertination" />
+                                            <input class="form-control py-4" type="text" placeholder="Enter expertination" name="expertination" required/>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="small mb-1">Description</label>
 
-                                            <textarea class="form-control" aria-label="With textarea" cols="12" rows="10"></textarea>
+                                            <textarea class="form-control" aria-label="With textarea" name="description" cols="12" rows="10" required></textarea>
                                         </div>
                                         <div class="col-md-12">
 
@@ -47,7 +91,7 @@
 
 
 
-                                        <div class="form-group mt-4 mb-0"><a class="btn btn-primary btn-block" href="index.html" type="submit">Submit</a></div>
+                                        <div class="form-group mt-4 mb-0"><button class="btn btn-primary btn-block" name="submit" type="submit">Submit</button></div>
 
                                     </form>
                                 </div>

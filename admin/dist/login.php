@@ -1,3 +1,47 @@
+<?php
+
+session_start();
+
+include 'dbconnection/dbconnection.php';
+
+
+if (isset($_POST['submit'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+   
+    $email_query = " select * from users where email='$email' ";
+    $query = mysqli_query($con, $email_query);
+    $email_exists = mysqli_num_rows($query);
+    if($email_exists)
+    {
+       $email_pass = mysqli_fetch_assoc($query);
+       $db_pass = $email_pass['password'];
+       $pass_decode = password_verify($password,$db_pass); 
+        
+       if($pass_decode)
+       {
+         $_SESSION['user_name'] = $email_pass['name'];  
+        header('location:index.php');
+       }
+       else
+       {
+        echo "<script> alert('Incorrect password');  </script>";
+       }
+
+    }
+    else
+    {
+        
+        echo "<script> alert('Email not exists');  </script>";
+    }
+    
+}
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,16 +78,16 @@
                                     </div>
                                 </div>
                                 <div class="card-body" style="height: 400px;">
-                                    <form style="margin-top: 20px;">
+                                    <form style="margin-top: 20px;" action="" method="post">
                                         <div class="form-group">
                                             <label class="small mb-1" for="inputEmailAddress">Email</label>
-                                            <input class="form-control py-4" id="inputEmailAddress" type="email"
-                                                placeholder="Enter email address" />
+                                            <input class="form-control py-4" id="inputEmailAddress" type="email" name="email"
+                                                placeholder="Enter email address" required/>
                                         </div>
                                         <div class="form-group">
                                             <label class="small mb-1" for="inputPassword">Password</label>
-                                            <input class="form-control py-4" id="inputPassword" type="password"
-                                                placeholder="Enter password" />
+                                            <input class="form-control py-4" id="inputPassword" type="password" name="password"
+                                                placeholder="Enter password" required />
                                         </div>
                                         <div class="form-group">
                                             <div
@@ -56,8 +100,9 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group mt-4 mb-0"><a class="btn btn-primary btn-block"
-                                                href="index.html" type="submit">Login</a></div>
+                                        <div class="form-group mt-4 mb-0">
+                                            <button class="btn btn-primary btn-block"
+                                             type="submit" name="submit">Login</button></div>
 
                                     </form>
                                 </div>

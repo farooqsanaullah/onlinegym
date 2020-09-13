@@ -1,3 +1,6 @@
+<?php  include 'check_admin_login.php';   ?>
+
+
 <?php  include 'header.php';   ?>
   
         <div id="layoutSidenav_content">

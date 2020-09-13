@@ -1,4 +1,30 @@
 
+<?php  include 'check_admin_login.php';   ?>
+<?php 
+
+
+include 'dbconnection/dbconnection.php';
+if (isset($_POST['submit'])) {
+    $class_name = $_POST['class_name'];
+    $trainer_name = $_POST['trainer_name'];
+    $timing = $_POST['timing'];
+    $day_of_week = $_POST['day_of_week'];
+    $description = $_POST['description'];
+
+        $insert_query = "insert into schedules(class_name,trainer_name,timing,day_of_week,description) 
+              values('$class_name','$trainer_name','$timing','$day_of_week','$description')";
+        $insert_data = mysqli_query($con, $insert_query);
+        if ($insert_data) {
+
+            echo "<script> alert('Successfully Add Schedule');  </script>";
+        } else {
+            echo "<script> alert('Error');  </script>";
+        }
+    
+}
+
+
+?> 
 <?php  include 'header.php';   ?>
 <div id="layoutSidenav_content">
             <main>
@@ -14,22 +40,22 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <form style="margin-top: 20px;">
+                                    <form style="margin-top: 20px;" action="" method="post">
                                         <div class="form-group">
                                             <label class="small mb-1">Class Name</label>
-                                            <input class="form-control py-4" type="text" placeholder="Enter class name" />
+                                            <input class="form-control py-4" type="text" placeholder="Enter class name" name="class_name" required/>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="small mb-1">Trainer Name</label>
-                                            <input class="form-control py-4" type="text" placeholder="Enter Trainer Name" />
+                                            <input class="form-control py-4" type="text" placeholder="Enter Trainer Name" name="trainer_name"  required/>
                                         </div>
                                         <div class="form-group">
                                             <label class="small mb-1">Timing</label>
-                                            <input class="form-control py-4" type="text" placeholder="Enter timing" />
+                                            <input class="form-control py-4" type="text" placeholder="Enter timing" name="timing"  required/>
                                         </div>
                                         <label class="small mb-1">Please select day of week</label>
-                                                <select class="browser-default custom-select" required>
+                                                <select class="browser-default custom-select" name="day_of_week"  required>
                                                   
                                                   <option value="monday" selected>Monday</option>
                                                     <option value="Tuesday">Tuesday</option>
@@ -44,12 +70,12 @@
                                         <div class="form-group">
                                             <label class="small mb-1">Description</label>
 
-                                            <textarea class="form-control" aria-label="With textarea" cols="12" rows="10"></textarea>
+                                            <textarea class="form-control" aria-label="With textarea" cols="12" rows="10" name="description" required></textarea>
                                         </div>
 
 
 
-                                        <div class="form-group mt-4 mb-0"><a class="btn btn-primary btn-block" href="index.html" type="submit">Submit</a></div>
+                                        <div class="form-group mt-4 mb-0"><button class="btn btn-primary btn-block"  name="submit" type="submit">Submit</button></div>
 
                                     </form>
                                 </div>

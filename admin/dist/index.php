@@ -1,4 +1,6 @@
-<?php  include 'check_admin_login.php';   ?>
+<?php  include 'check_admin_login.php';  include 'dbconnection/dbconnection.php'; ?>
+
+
 
 
 <?php  include 'header.php';   ?>
@@ -15,7 +17,13 @@
                                     <i class="fa fa-user-circle" aria-hidden="true"></i> Total Users
                                 </div>
                                 <div class="card-body">
-                                   <h1>+100</h1>
+                                    
+                                   <h1><?php 
+                                   $table = " select * from users";
+                                   $query = mysqli_query($con, $table);
+                                   $exists = mysqli_num_rows($query);
+                                   echo $exists;
+                                   ?></h1>
                                 </div>
                                 
                                 <div class="card-footer d-flex align-items-center justify-content-between">
@@ -31,7 +39,14 @@
                                     <i class="fa fa-user-circle" aria-hidden="true"></i> Total Braches
                                 </div>
                                 <div class="card-body">
-                                   <h1>+10</h1>
+                                   <h1>
+                                   <?php 
+                                   $table = " select * from branches";
+                                   $query = mysqli_query($con, $table);
+                                   $exists = mysqli_num_rows($query);
+                                   echo $exists;
+                                   ?>
+                                   </h1>
                                 </div>
                                 
                                 <div class="card-footer d-flex align-items-center justify-content-between">
@@ -47,7 +62,14 @@
                                     <i class="fa fa-user-circle" aria-hidden="true"></i> Total Classess
                                 </div>
                                 <div class="card-body">
-                                   <h1>+30</h1>
+                                   <h1>
+                                   <?php 
+                                   $table = " select * from classes";
+                                   $query = mysqli_query($con, $table);
+                                   $exists = mysqli_num_rows($query);
+                                   echo $exists;
+                                   ?>
+                                   </h1>
                                 </div>
                                 
                                 <div class="card-footer d-flex align-items-center justify-content-between">
@@ -63,7 +85,14 @@
                                     <i class="fa fa-user-circle" aria-hidden="true"></i> Total Trainer
                                 </div>
                                 <div class="card-body">
-                                   <h1>+20</h1>
+                                   <h1>
+                                   <?php 
+                                   $table = " select * from trainers";
+                                   $query = mysqli_query($con, $table);
+                                   $exists = mysqli_num_rows($query);
+                                   echo $exists;
+                                   ?>
+                                   </h1>
                                 </div>
                                 
                                 <div class="card-footer d-flex align-items-center justify-content-between">

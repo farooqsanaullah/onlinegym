@@ -1,4 +1,4 @@
-<?php  include 'check_admin_login.php';   ?>
+
 <?php 
 
 
@@ -9,7 +9,7 @@ if (isset($_POST['submit'])) {
     $phone_number = $_POST['phone_number'];
     $expertination = $_POST['expertination'];
     $description = $_POST['description'];
-
+    $class_name  = $_POST['class_name']; 
 
     $email_query = " select * from trainers where email='$email' ";
     $query = mysqli_query($con, $email_query);
@@ -18,8 +18,8 @@ if (isset($_POST['submit'])) {
     if ($email_count > 0) {
         echo "<script> alert('Email already exists');  </script>";
     } else {
-        $insert_query = "insert into trainers(name,email,phone_number,expertination,description,image_url) 
-              values('$name','$email','$phone_number','$expertination','$description','')";
+        $insert_query = "insert into trainers(name,email,phone_number,expertination,description,class_name) 
+              values('$name','$email','$phone_number','$expertination','$description','$class_name')";
         $insert_data = mysqli_query($con, $insert_query);
         if ($insert_data) {
 
@@ -53,23 +53,30 @@ if (isset($_POST['submit'])) {
                                 <div class="card-body">
                                     <form style="margin-top: 20px;" action="" method="post">
 
-                                        <div class="col-md-12">
-                                            <div class="challenge-img" align="center">
-                                                <img src="https://cdn.lifehack.org/wp-content/uploads/2018/04/24222733/workout-routines-for-women.0011.jpeg" class="img-fluid circle" />
-                                            </div>
-                                        </div>
+                                      
                                         <div class="form-group">
                                             <label class="small mb-1">Name</label>
                                             <input class="form-control py-4" type="text" name="name" placeholder="Enter name" required/>
                                         </div>
                                         <div class="form-group">
                                             <label class="small mb-1">Email</label>
-                                            <input class="form-control py-4" type="text" name="email"  placeholder="Enter email" required/>
+                                            <input class="form-control py-4" type="email" name="email"  placeholder="Enter email" required/>
                                         </div>
                                         <div class="form-group">
                                             <label class="small mb-1">Phone Number</label>
                                             <input class="form-control py-4" type="number" name="phone_number" placeholder="Enter phone number" required/>
                                         </div>
+                                        <label class="small mb-1">Class Name</label>   
+                                        <select class="browser-default custom-select" name="class_name" required>
+                                        <?php $table = " select * from classes";
+                                        $query = mysqli_query($con, $table);
+                                        while ($data = mysqli_fetch_array($query)) {
+
+                                        ?>
+                                                    <option value="<?php echo $data['name']?>"><?php echo $data['name']?></option>
+                                        
+                                                    <?php }?>            
+                                                </select>
                                         <div class="form-group">
                                             <label class="small mb-1">Expertination</label>
                                             <input class="form-control py-4" type="text" placeholder="Enter expertination" name="expertination" required/>
@@ -80,14 +87,7 @@ if (isset($_POST['submit'])) {
 
                                             <textarea class="form-control" aria-label="With textarea" name="description" cols="12" rows="10" required></textarea>
                                         </div>
-                                        <div class="col-md-12">
-
-                                            <label for="imgs" class="file__div">
-                                                <input type="file" id="imgs" (change)="processFile($event)" hidden accept=" image/jpeg, image/png" multiple="false" />
-                                                <a mat-raised-button class="attach__button">
-                                                    Profile image </a>
-                                            </label>
-                                        </div>
+                                        
 
 
 

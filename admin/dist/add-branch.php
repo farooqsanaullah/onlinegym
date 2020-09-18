@@ -55,11 +55,7 @@ if (isset($_POST['submit'])) {
                                 <div class="card-body">
                                     <form style="margin-top: 20px;" action="" method="post">
 
-                                        <div class="col-md-12">
-                                            <div class="challenge-img" align="center">
-                                                <img src="https://image.freepik.com/free-photo/sport-woman-enjoy-workout-with-treadmill-gym-fitness-center_9693-130.jpg" class="img-fluid circle" />
-                                            </div>
-                                        </div>
+                                       
                                         <div class="form-group">
                                             <label class="small mb-1">Branch Name</label>
                                             <input class="form-control py-4" type="text" placeholder="Enter branch name" name="name" required />
@@ -81,14 +77,7 @@ if (isset($_POST['submit'])) {
 
                                             <textarea class="form-control" aria-label="With textarea" cols="12" rows="10" name="description" required></textarea>
                                         </div>
-                                        <div class="col-md-12">
-
-                                            <label for="imgs" class="file__div">
-                                                <input type="file" id="imgs" (change)="processFile($event)" hidden accept=" image/jpeg, image/png" multiple="false" />
-                                                <a mat-raised-button class="attach__button">
-                                                   image of branch </a>
-                                            </label>
-                                        </div>
+                                      
 
 
 

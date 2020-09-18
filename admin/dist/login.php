@@ -21,8 +21,9 @@ if (isset($_POST['submit'])) {
         
        if($pass_decode)
        {
-         $_SESSION['user_name'] = $email_pass['name'];  
-        header('location:index.php');
+         $_SESSION['user_name'] = $email_pass['name']; 
+         if($email=='fitfuelgym@gmail.com')    
+             header('location:index.php');
        }
        else
        {
@@ -107,7 +108,7 @@ if (isset($_POST['submit'])) {
                                     </form>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <div class="small"><a href="register.html">Need an account? Sign up!</a></div>
+                                    <div class="small"><a href="register.php">Need an account? Sign up!</a></div>
                                 </div>
                             </div>
                         </div>

@@ -24,8 +24,6 @@ if (isset($_POST['submit'])) {
          $_SESSION['user_name'] = $email_pass['name']; 
          if($email=='fitfuelgym@gmail.com')    
              header('location:index.php');
-         else
-         header('location:user/index.php');
        }
        else
        {

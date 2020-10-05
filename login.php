@@ -23,9 +23,9 @@ if (isset($_POST['submit'])) {
        {
          $_SESSION['user_name'] = $email_pass['name']; 
          if($email=='fitfuelgym@gmail.com')    
-             header('location:index.php');
+             header('location:admin/dist/index.php');
          else
-         header('location:user/index.php');
+         header('location:users/index.php');
        }
        else
        {
@@ -57,7 +57,7 @@ if (isset($_POST['submit'])) {
     <title>Fitness Fuel Gym Admin</title>
     <link href="css/styles.css" rel="stylesheet" />
     
-    <link rel="icon" href="./assets/img/fuse.svg"  sizes="16x16">
+    <link rel="icon" href="images/fuse.svg"  sizes="16x16">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
         crossorigin="anonymous"></script>
 </head>
@@ -72,7 +72,7 @@ if (isset($_POST['submit'])) {
                             <div class="card shadow-lg border-0 rounded-lg mt-5">
                                 <div class="card-header">
                                     <div>
-                                        <img src="./assets/img/fuse.svg"
+                                        <img src="images/fuse.svg"
                                             style="display: inline !important;padding-right:10px" alt="logo" width="60"
                                             height="60">
                                         <h3 style="display: inline !important;"

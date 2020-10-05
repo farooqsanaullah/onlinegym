@@ -1,0 +1,71 @@
+.fa-bars
+{
+    font-size: 18px;
+    }
+.navbar-brand
+{
+    padding-left: 0px !important;
+    
+}
+.gym_name
+{
+    color:#ffffff;
+    padding: 10px 20px;
+    font-size: 20px;
+}
+.gym_name:hover
+{
+    text-decoration: none;
+    color:#ffffff;
+    padding: 10px 20px;
+}
+
+.fas
+{
+    font-size: 25px !important;
+    padding-right: 20px !important;
+}
+.m-left
+{
+    margin-right: 8px !important;
+}
+.title
+{
+    font-size:25px !important;
+}
+.mt-table
+{
+    margin-top:80px;
+}
+.summary-title
+{
+    padding:10px 10px !important;
+    font-size:18px !important;
+}
+.bg-primary
+{
+    background-color: #039BE5 !important;
+}
+.img-fluid
+{
+  width:100px;
+  height: 100px;
+  object-fit: cover;
+}
+.circle
+{
+  border-radius: 50%;
+}
+.attach__button {
+    padding:10px 10px;
+    /* margin:60px 0px !important; */
+    text-decoration: none !important;
+    background-color: #039BE5;
+    color: #ffffff !important;
+    border-radius: 5px;
+  }
+.file__div
+{
+  padding-top:40px;
+  width:100% !important;
+}
